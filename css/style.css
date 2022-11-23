@@ -1,0 +1,801 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('inc/bootstrap.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lg-zoom.css');
+@import url('https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lg-thumbnail.css');
+@import url('https://unpkg.com/aos@2.3.1/dist/aos.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
+
+@font-face {
+    font-family: "Monoline";
+    font-display: swap;
+    src: url("font/Monoline-Signature.otf") format("opentype")
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin-bottom: 0;
+}
+
+hr {
+    margin: 0;
+    opacity: 1;
+}
+
+.btn-volume {
+    position: fixed !important;
+    bottom: 30px !important;
+    left: 20px;
+    border-radius: 50%;
+    transition: left 1s;
+    -webkit-transition: left 1s;
+}
+
+.form-hide {
+    display: none;
+}
+
+.spinner-label {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.form-spiner:disabled {
+    background-color: var(--bs-white);
+    opacity: 1;
+}
+
+.preloader {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(var(--bs-white-rgb), 0.99)
+}
+
+.preloader .loading {
+    left: 50%;
+    top: 50%;
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    letter-spacing: 4.4px;
+    text-transform: capitalize;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(-50%, -60%);
+}
+
+.preloader .loading:before {
+    color: rgba(var(--bs-primary-rgb), 0.4);
+    content: attr(data-loading-text);
+}
+
+.preloader .loading:after {
+    top: 0;
+    left: 0;
+    width: 0;
+    opacity: 1;
+    color: var(--bs-primary);
+    overflow: hidden;
+    position: absolute;
+    content: attr(data-loading-text);
+    -webkit-animation: loading 5s infinite;
+    animation: loading 5s infinite;
+}
+
+@-webkit-keyframes loading {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.primary-pane {
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    width: 61%;
+    padding: 5rem 0;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url(../img/countdown.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.primary-pane p {
+    font-size: 18px;
+    color: var(--bs-white);
+}
+
+.primary-pane h2 {
+    font-size: 20px;
+    color: var(--bs-white);
+}
+
+.primary-pane h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--bs-white);
+}
+
+.secondary-pane {
+    position: static;
+    right: 0;
+    background: var(--bs-white);
+    width: 39%;
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 960px) {
+    .primary-pane {
+        position: relative;
+        width: 100%;
+        display: none;
+    }
+
+    .secondary-pane {
+        position: relative;
+        width: 100%;
+    }
+}
+
+#invitationModal .modal-content {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(180deg, rgba(0, 4, 10, 0.36) 68%, #000c0f 100%), url(../img/cover.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#invitationModal .modal-body {
+    padding-top: 50px;
+    padding-bottom: 120px;
+    text-align: center;
+}
+
+#invitationModal .modal-body p {
+    font-size: 16px;
+    color: var(--bs-white);
+}
+
+#invitationModal .modal-body h2 {
+    font-size: 18px;
+    color: var(--bs-white);
+}
+
+#invitationModal .modal-body h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: var(--bs-white);
+}
+
+.header {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 74%, var(--bs-primary) 100%), url(../img/header.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.header-inner {
+    height: 100vh;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.header-title {
+    padding: 30px 0;
+}
+
+.header-title p {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--bs-white);
+}
+
+.header-title h2 {
+    font-family: monoline;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--bs-white);
+}
+
+.header-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    color: var(--bs-white);
+}
+
+.about {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    margin-top: -3px;
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom-width: 8px;
+    border-bottom-style: double;
+    border-bottom-color: var(--bs-white);
+}
+
+.about img {
+    width: 100px;
+    margin-bottom: 1rem;
+}
+
+.about p {
+    font-size: 14px;
+    color: var(--bs-white);
+}
+
+.about .about-img-primary {
+    width: 100%;
+    padding-top: 400px;
+    background: url(../img/quote1.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 30px 0 0;
+}
+
+.about .card-about-primary {
+    overflow: hidden;
+    border-radius: 0 0 0 30px;
+    border-width: 8px 0px 0px 0px;
+    border-style: double;
+    border-top-color: var(--bs-primary);
+    background-color: var(--bs-white);
+    margin-top: 3px;
+}
+
+.about .about-img-secondary {
+    width: 100%;
+    padding-top: 400px;
+    background: url(../img/quote2.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px 0 0 0;
+}
+
+.about .card-about-secondary {
+    overflow: hidden;
+    border-radius: 0 0 30px 0;
+    border-width: 8px 0px 0px 0px;
+    border-style: double;
+    border-top-color: var(--bs-primary);
+    background-color: var(--bs-white);
+    margin-top: 3px;
+}
+
+.about .card hr {
+    width: 50px;
+    border-width: 8px 0px 0px 0px;
+    border-style: double;
+    border-top-color: var(--bs-primary);
+    margin: 0 auto 16px auto;
+}
+
+.about .card p {
+    font-size: 14px;
+    color: var(--bs-color-body);
+}
+
+.couple {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-white);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom-width: 8px;
+    border-bottom-style: double;
+    border-bottom-color: var(--bs-primary);
+}
+
+.couple h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+
+.couple img {
+    width: 200px;
+}
+
+.couple h2 {
+    font-family: monoline;
+    font-size: 2rem;
+    color: var(--bs-primary);
+}
+
+.couple h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+}
+
+.couple p {
+    font-size: 12px;
+}
+
+.story {
+    text-align: left;
+    margin-top: 4rem;
+}
+
+.story-img-primary {
+    width: 100%;
+    padding-top: 300px;
+    background: url(../img/gall-1.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+.story-img-secondary {
+    width: 100%;
+    padding-top: 300px;
+    background: url(../img/gall-2.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+.story h1 {
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    margin-left: -1.5px;
+    background-color: var(--bs-primary);
+}
+
+.timeline>.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline>.timeline-item:after,
+.timeline>.timeline-item:before {
+    content: " ";
+    display: table;
+}
+
+.timeline>.timeline-item:after {
+    clear: both;
+}
+
+.timeline>.timeline-item>.timeline-panel {
+    float: left;
+    position: relative;
+    width: 46%;
+    padding: 20px;
+    border: 1px solid var(--bs-primary);
+    background-color: var(--bs-white);
+    border-radius: 2px;
+    box-shadow: 0 1px 6px rgba(var(--bs-primary-rgb), 0.05);
+}
+
+.timeline>.timeline-item>.timeline-panel:before {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 26px;
+    right: -8px;
+    border-color: transparent var(--bs-primary);
+    border-style: solid;
+    border-width: 8px 0 8px 8px;
+}
+
+.timeline>.timeline-item>.timeline-panel:after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    right: -7px;
+    border-color: transparent var(--bs-white);
+    border-style: solid;
+    border-width: 7px 0 7px 7px;
+}
+
+.timeline>.timeline-item>.timeline-badge {
+    z-index: 10;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    border-radius: 50% 50% 50% 50%;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 50px;
+    color: var(--bs-primary);
+    overflow: hidden;
+    background-color: var(--bs-white);
+}
+
+.timeline>.timeline-item.timeline-inverted>.timeline-panel {
+    float: right;
+}
+
+.timeline>.timeline-item.timeline-inverted>.timeline-panel:before {
+    right: auto;
+    left: -8px;
+    border-right-width: 8px;
+    border-left-width: 0;
+}
+
+.timeline>.timeline-item.timeline-inverted>.timeline-panel:after {
+    right: auto;
+    left: -7px;
+    border-right-width: 7px;
+    border-left-width: 0;
+}
+
+.timeline-body>p,
+.timeline-body>ul {
+    margin-bottom: 0;
+}
+
+.timeline-left:before {
+    left: 30px;
+}
+
+.timeline-left>.timeline-item>.timeline-badge {
+    left: 30px;
+    top: 9px;
+}
+
+.timeline-left>.timeline-item>.timeline-panel {
+    width: calc(100% - 80px);
+}
+
+.timeline-body h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.timeline-body p {
+    font-size: 12px;
+}
+
+.date-wedding {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    padding: 2rem 0;
+    border-bottom-width: 8px;
+    border-bottom-style: double;
+    border-bottom-color: var(--bs-white);
+    text-align: center;
+}
+
+.date-wedding .img-date-primary {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.86) 100%), url(../img/date1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.date-wedding .img-date-secondary {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.86) 100%), url(../img/date2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.date-wedding .card {
+    overflow: hidden;
+}
+
+.date-wedding .card h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-primary);
+}
+
+.date-wedding .card hr {
+    border-width: 2 0 0 0;
+    border-color: var(--bs-primary);
+}
+
+.date-wedding .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--bs-primary);
+}
+
+.date-wedding .card p {
+    font-size: 14px;
+}
+
+.filter-ig {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.filter-ig img {
+    height: 450px;
+}
+
+.filter-ig h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-primary);
+}
+
+.filter-ig p {
+    font-size: 14px;
+}
+
+.rsvp {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.rsvp .card {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--bs-primary);
+    text-align: center;
+}
+
+.rsvp h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-primary);
+    text-align: center;
+}
+
+.rsvp h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+}
+
+.rsvp p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.wedding-gift {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-white);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom-width: 8px;
+    border-bottom-style: double;
+    border-bottom-color: var(--bs-primary);
+}
+
+.wedding-gift span {
+    font-size: 40px;
+    color: var(--bs-primary);
+}
+
+.wedding-gift h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-primary);
+}
+
+.wedding-gift p {
+    font-size: 14px;
+}
+
+.wedding-gift .card {
+    overflow: hidden;
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--bs-primary);
+}
+
+.wedding-gift .card .card-body p {
+    font-size: 14px;
+    color: var(--bs-primary);
+}
+
+.countdown {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    padding: 2rem 0;
+}
+
+.countdown h1 {
+    font-family: monoline;
+    font-size: 20px;
+    margin-bottom: -5px;
+    text-align: right;
+    color: var(--bs-white);
+}
+
+.img-countdown {
+    padding-top: 500px;
+    background: url(../img/gall-2.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 30px 0 0;
+}
+
+.countdown .card {
+    overflow: hidden;
+    border-radius: 0 0 0 30px;
+    text-align: center;
+}
+
+.countdown .card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--bs-primary);
+}
+
+.countdown .card .value span {
+    font-size: 20px;
+    color: var(--bs-primary);
+}
+
+.countdown .card .value .sep {
+    font-size: 20px;
+}
+
+.countdown .card .value .label {
+    font-size: 14px;
+}
+
+.gallery {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    padding: 2rem 0;
+    margin-top: -3px;
+}
+
+.gallery h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-white);
+    text-align: center;
+}
+
+.gallery hr {
+    width: 150px;
+    border-width: 8px 0px 0px 0px;
+    border-style: double;
+    border-top-color: var(--bs-white);
+    margin: 16px auto 32px auto;
+}
+
+.wishes {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    padding: 2rem 0 2rem 0;
+    margin-top: -3px;
+}
+
+.wishes .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.wishes .card .card-body {
+    padding: 2.5rem 1rem 1rem 1rem;
+    text-align: center;
+}
+
+.wishes .card .card-body h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: var(--bs-primary);
+}
+
+.wishes .comment {
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 32px 0;
+    max-height: 80vh;
+}
+
+.wishes .comment .list-group-item {
+    padding: 0.5rem 0.75rem;
+    color: var(--bs-white);
+    background-color: transparent;
+    border: 0px;
+    margin-bottom: 12px;
+}
+
+.wishes .comment .list-group-item h5 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.wishes .comment .list-group-item p {
+    font-size: 14px;
+}
+
+.wishes .comment .list-group-item small {
+    font-size: 10px;
+    align-self: center !important;
+}
+
+.wishes .closing {
+    text-align: center;
+}
+
+.wishes .closing h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--bs-white);
+}
+
+.wishes .closing p {
+    font-size: 14px;
+    color: var(--bs-white);
+}
+
+.page-footer {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bs-white);
+    padding: 12px 0;
+}
+
+.page-footer img {
+    height: 30px;
+}
+
+.page-footer p {
+    font-size: 12px;
+}
